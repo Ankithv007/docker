@@ -56,6 +56,7 @@ docker run -d -p 8000:8000 --name my-django-app-container my-django-app
   docker exec -it my-django-app-container python manage.py migrate
 
   ```
+  ### don't forget to change the sg group both http (80)  and port 8000 in sg
   ### Create a Superuser
    ###### Create a Superuser
   ```
