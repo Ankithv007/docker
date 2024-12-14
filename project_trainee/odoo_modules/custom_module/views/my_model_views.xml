@@ -1,0 +1,37 @@
+<odoo>
+    <record id="view_custom_module_form" model="ir.ui.view">
+        <field name="name">custom.module.form</field>
+        <field name="model">custom.module</field>
+        <field name="arch" type="xml">
+            <form string="Custom Module">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                        <field name="active"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_custom_module_tree" model="ir.ui.view">
+        <field name="name">custom.module.tree</field>
+        <field name="model">custom.module</field>
+        <field name="arch" type="xml">
+            <tree string="Custom Module">
+                <field name="name"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <menuitem id="menu_custom_module_root" name="Custom Module" sequence="1"/>
+    <menuitem id="menu_custom_module_main" name="Custom Entries" parent="menu_custom_module_root" action="action_custom_module"/>
+    
+    <record id="action_custom_module" model="ir.actions.act_window">
+        <field name="name">Custom Entries</field>
+        <field name="res_model">custom.module</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,42 @@
+version: '3.9'
+
+services:
+  django-app:
+    build:
+      context: ./django-app  
+    container_name: django-app-container
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONDONTWRITEBYTECODE=1
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./django-app:/app 
+    depends_on:
+      - odoo
+
+  odoo:
+    image: odoo:16.0  
+    container_name: odoo-container
+    ports:
+      - "8069:8069"  
+      - "8071:8071"  
+    environment:
+      - HOST=odoo-db
+    volumes:
+      - ./odoo_modules:/mnt/extra-addons  
+    depends_on:
+      - odoo-db
+
+  odoo-db:
+    image: postgres:13
+    container_name: odoo-db-container
+    environment:
+      POSTGRES_USER: odoo
+      POSTGRES_PASSWORD: odoo
+      POSTGRES_DB: odoo
+    volumes:
+      - odoo-db-data:/var/lib/postgresql/data
+
+volumes:
+  odoo-db-data: {}
