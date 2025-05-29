@@ -56,10 +56,9 @@ chmod +x ~/.docker/cli-plugins/docker-buildx
 
 # Verify installation
 docker buildx version
-
+-----------------------------------------------------------------------------------------------------------------------------------------------------
 
 #How to Use Docker Buildx for Multi-Arch Image
-```
 1. Create and use a new builder instance:
 
 docker buildx create --name multiarch-builder --use
@@ -72,7 +71,6 @@ docker buildx build --platform linux/amd64,linux/arm64 -t yourdockerhubusername/
 
 3. Verify multi-arch image manifest:
 docker buildx imagetools inspect yourdockerhubusername/yourimage:v1
-
 ```
 ---------------------------------------------------------------------------------------------------------
 
